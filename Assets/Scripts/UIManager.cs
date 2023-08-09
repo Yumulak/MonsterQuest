@@ -12,6 +12,8 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         gameCanvas = FindObjectOfType<Canvas>();
+        CharacterEvents.characterDamaged.AddListener(CharacterTookDamage);
+        CharacterEvents.characterHealed.AddListener(CharacterHealed);
     }
 
     public void CharacterTookDamage(GameObject character, int damagereceived)
@@ -28,7 +30,7 @@ public class UIManager : MonoBehaviour
         // spawn text at hit position
         Vector3 spawnPosition = Camera.main.WorldToScreenPoint(character.transform.position);
         //instantiate copy of UIManager prefab and set text on it
-        TMP_Text tmpText = Instantiate(damageTextPrefab, spawnPosition, Quaternion.identity, gameCanvas.transform).GetComponent<TMP_Text>();
+        TMP_Text tmpText = Instantiate(healthTextPrefab, spawnPosition, Quaternion.identity, gameCanvas.transform).GetComponent<TMP_Text>();
         tmpText.text = healthreceived.ToString();
     }
 }
