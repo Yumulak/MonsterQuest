@@ -12,10 +12,18 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         gameCanvas = FindObjectOfType<Canvas>();
-        CharacterEvents.characterDamaged.AddListener(CharacterTookDamage);
-        CharacterEvents.characterHealed.AddListener(CharacterHealed);
+       
     }
-
+    private void OnEnable()
+    {
+        CharacterEvents.characterDamaged += CharacterTookDamage;
+        CharacterEvents.characterHealed += CharacterHealed;
+    }
+    private void OnDisable()
+    {
+        CharacterEvents.characterDamaged -= CharacterTookDamage;
+        CharacterEvents.characterHealed -= CharacterHealed;
+    }
     public void CharacterTookDamage(GameObject character, int damagereceived)
     {
         // spawn text at hit position
@@ -24,7 +32,6 @@ public class UIManager : MonoBehaviour
         TMP_Text tmpText = Instantiate(damageTextPrefab, spawnPosition, Quaternion.identity, gameCanvas.transform).GetComponent<TMP_Text>();
         tmpText.text = damagereceived.ToString();
     }
-
     public void CharacterHealed(GameObject character, int healthreceived) 
     {
         // spawn text at hit position

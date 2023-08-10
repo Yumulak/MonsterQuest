@@ -29,7 +29,6 @@ public class TouchingDirections : MonoBehaviour
             animator.SetBool(AnimationStrings.isGrounded, value);
         } 
     }
-
     [SerializeField]
     private bool _isOnWall = true;
     public bool IsOnWall
@@ -44,7 +43,6 @@ public class TouchingDirections : MonoBehaviour
             animator.SetBool(AnimationStrings.isOnWall, value);
         }
     }
-
     [SerializeField]
     private bool _isOnCeiling = true;
     private Vector2 wallCheckDirection => gameObject.transform.localScale.x > 0? Vector2.right : Vector2.left;
@@ -61,13 +59,11 @@ public class TouchingDirections : MonoBehaviour
             animator.SetBool(AnimationStrings.isOnCeiling, value);
         }
     }
-
     private void Awake()
     {
         animator = GetComponent<Animator>();
         touchingCol = GetComponent<CapsuleCollider2D>();
     }
-
     private void FixedUpdate()
     {
         IsGrounded = touchingCol.Cast(Vector2.down,castFilter, groundHit, groundDistance) > 0;

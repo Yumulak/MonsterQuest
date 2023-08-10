@@ -8,9 +8,11 @@ using UnityEngine.Events;
 
 public class CharacterEvents
 {
+    //static events invoked by Damagable components using Damagable script call their respective method in UIManager for damage or health
+
     //character damaged and damage value
-    public static UnityEvent<GameObject, int> characterDamaged;
+    public static UnityAction<GameObject, int> characterDamaged;
     //character healed and amount healed
-    public static UnityEvent<GameObject, int> characterHealed;
+    public static UnityAction<GameObject, int> characterHealed;
 }
 
