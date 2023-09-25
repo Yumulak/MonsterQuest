@@ -8,5 +8,8 @@ MonsterQuest! This is a game I am working on in Unity using C#.
 
 
 
-https://github.com/Yumulak/MonsterQuest/assets/92001031/11d73c17-af80-4a26-aa2d-ef384b570b25
+
+https://github.com/Yumulak/MonsterQuest/assets/92001031/66b8a9fc-81c9-4fb7-be58-0481478f97fa
+
+
 
